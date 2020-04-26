@@ -28,10 +28,15 @@ body {
     color: white;
 }*/
 
+.welcome {
+  position: relative;
+  height: calc(100vh - 56px);
+}
+
 .big-name {
   width: 100%;
-  margin-top: 35vh;
-  margin-bottom: 35vh;
+  position: absolute;
+  top: 50%;
   text-align: center;
 }
 
@@ -48,11 +53,13 @@ hr {
 
 
 .mouse_scroll {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
   display: block;
   margin: 0 auto;
   width: 24px;
   height: 100px;
-  margin-top: 125px;
 }
 
 
