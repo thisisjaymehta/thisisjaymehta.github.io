@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Snake number pattern in javascript</title>
+    <style>
+      pre {
+        background-color: #eee;
+        border: 1px solid #999;
+        display: block;
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Snake number pattern in javascript</h1>
+    <hr />
+    <p>
+      Snake pattern is pyramid type pattern but numbers flowing in direction resembling to movement of snake.
+    </p>
+    <img src="img/snake-pattern.png" alt="Snake number pattern explanation image">
+    <p>Code:</p>
+    <pre>
+n = 5;
+var k = (n * (n + 1)) / 2;
+
+for (var i = 0; i < n; i++) {
+  row = "";
+  for (var j = 0; j <= i; j++) {
+    var skip = 0;
+    for (m = j - 1; m >= 0; m--) {
+      skip = skip + (n - m);
+    }
+    if (j % 2 == 0) {
+      row += k - skip - (i - j) + " ";
+    } else {
+      row += k - skip - (n - i + (j - 1) - j) + " ";
+    }
+  }
+
+  console.log(row);
+}
+    </pre>
+    <p>Output:</p>
+    <pre>
+15 
+14 7 
+13 8 6 
+12 9 5 2 
+11 10 4 3 1
+    </pre>
+    <p>
+      Above code works for any number `n`, just replace n = 5 with your number.
+    </p>
+  </body>
+</html>
