@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Photos • Jay Mehta</title>
+    <link rel="stylesheet" href="../style/style.css" />
+    <style>
+      body {
+        background-color: #0e0e0e;
+      }
+      .container {
+        max-width: 1100px;
+      }
+      /* Make the whole card a link while keeping the nice hover */
+      a.album-card {
+        display: block;
+        text-decoration: none;
+        color: inherit;
+      }
+      a.album-card:hover {
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div id="photos-page">
+        <!-- Header -->
+        <div class="photos-header">
+          <h1>Photos</h1>
+          <a href="../index.html" class="back-link">← Back to home</a>
+        </div>
+
+        <p class="photos-intro">
+          A growing collection of places that stuck with me.
+        </p>
+
+        <!-- Albums List -->
+        <div class="albums-grid" id="albums-grid">
+          <!-- Populated by JS from the albums array below -->
+        </div>
+
+        <p style="margin-top: 60px; font-size: 13px; color: #555;">
+          Each album lives on its own page so I can give every trip its own personality and layout.
+        </p>
+      </div>
+    </div>
+
+    <script>
+      // ===== Album data (used only to render the list of stacks) =====
+      // When you add a new trip, add an entry here + create a matching folder
+      // with its own index.html (e.g. photos/new-trip-2025/index.html)
+      const albums = [
+        {
+          id: "kashmir-2024",
+          place: "Kashmir",
+          date: "November 2024",
+          stack: [
+            "https://picsum.photos/seed/kashmir-stack-1/800/620",
+            "https://picsum.photos/seed/kashmir-stack-2/800/620",
+            "https://picsum.photos/seed/kashmir-stack-3/800/620"
+          ]
+        },
+        {
+          id: "goa-2025",
+          place: "Goa",
+          date: "November 2025",
+          stack: [
+            "https://picsum.photos/seed/goa-stack-1/800/620",
+            "https://picsum.photos/seed/goa-stack-2/800/620",
+            "https://picsum.photos/seed/goa-stack-3/800/620"
+          ]
+        }
+      ];
+
+      function renderAlbums() {
+        const grid = document.getElementById("albums-grid");
+        grid.innerHTML = "";
+
+        albums.forEach((album) => {
+          const link = document.createElement("a");
+          link.href = album.id + "/";           // e.g. "iceland-2024/"
+          link.className = "album-card";
+
+          link.innerHTML = `
+            <div class="album-stack">
+              <img src="${album.stack[0]}" alt="" loading="lazy" />
+              <img src="${album.stack[1]}" alt="" loading="lazy" />
+              <img src="${album.stack[2]}" alt="" loading="lazy" />
+            </div>
+            <div class="album-meta">
+              <div class="album-place">${album.place}</div>
+              <div class="album-date">${album.date}</div>
+            </div>
+          `;
+
+          grid.appendChild(link);
+        });
+      }
+
+      renderAlbums();
+    </script>
+  </body>
+</html>
